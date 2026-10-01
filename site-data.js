@@ -147,6 +147,21 @@ window.SITE_DATA = {
       "mediaType": "image",
       "media": "https://antf-web.github.io/Portfolio-2026/images/vlcsnap-2026-10-01-17h48m37s797.png",
       "poster": ""
+    },
+    {
+      "id": "music-mupr1q05",
+      "category": "music",
+      "tag": "MUSIC / 04",
+      "title": "Mandaï",
+      "description": {
+        "en": "Future Garage Project",
+        "fr": "Projet Future Garage "
+      },
+      "tools": "MUSIC",
+      "link": "https://soundcloud.com/mandai-2084",
+      "mediaType": "image",
+      "media": "https://antf-web.github.io/Portfolio-2026/images/MANDAI_Wide_Banner_16x9.png",
+      "poster": ""
     }
   ],
   "cv": [
