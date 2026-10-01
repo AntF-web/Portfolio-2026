@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Antoine Flament — web, video & sound designer, DJ and cultural worker." />
+  <title>Antoine Flament — Portfolio / CV</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Home">
+      <span class="brand-mark">A<span>+</span></span>
+      <span class="brand-name">ANTOINE<br>FLAMENT</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#work" data-i18n="navWork">WORK</a>
+      <a href="#about" data-i18n="navBio">BIO</a>
+      <a href="#cv">CV</a>
+      <a href="#contact" data-i18n="navContact">CONTACT</a>
+    </nav>
+    <button class="lang" id="langToggle" type="button" aria-label="Switch language">FR</button>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-kicker" id="heroKicker">VINYL 2.0 / 2026</div>
+      <h1>
+        <span data-i18n="hero1" id="heroLine1">WEB, VIDEO</span><br>
+        <span class="outline">&amp; SOUND</span><br>
+        <span data-i18n="hero2" id="heroLine2">DESIGNER / DJ</span>
+      </h1>
+      <div class="hero-bottom">
+        <p data-i18n="heroText" id="heroText">Digital craft, music culture and visual storytelling — built between clean systems and creative chaos.</p>
+        <a href="#work" class="round-link" aria-label="See work">↓</a>
+      </div>
+    </section>
+
+    <section class="section work" id="work">
+      <div class="section-heading">
+        <span class="index">01</span>
+        <h2 data-i18n="workTitle">SELECTED WORK</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Portfolio filters">
+        <button class="filter active" data-filter="all">ALL</button>
+        <button class="filter" data-filter="music">MUSIC</button>
+        <button class="filter" data-filter="web">WEB</button>
+        <button class="filter" data-filter="video">VIDEO</button>
+      </div>
+      <div class="project-grid" id="projectGrid"></div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-heading">
+        <span class="index">02</span>
+        <h2>BIO</h2>
+      </div>
+      <div class="about-grid">
+        <blockquote>“SPACE IS THE BREATH OF ART”<cite>— Frank Lloyd Wright</cite></blockquote>
+        <div class="bio-copy">
+          <p data-i18n="bio1" id="bio1">Raised in an urban musical and graphic environment, I have spent years moving between cultures, creative practices and underground scenes.</p>
+          <p data-i18n="bio2" id="bio2">My different lives have led me through punk bass, photography, dub experiments, activist DJing, video editing, artist management, education and social work. I like precise tools, strong ideas, simple interfaces and projects that keep some human disorder inside the system.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cv" id="cv">
+      <div class="section-heading">
+        <span class="index">03</span>
+        <h2>CV / EXPERIENCE</h2>
+      </div>
+      <div class="cv-layout">
+        <div class="timeline">
+          <div class="timeline-row" data-cv-index="0"><span class="year">1991—NOW</span><div><h3 data-i18n="cv1">Musician / DJ</h3><p>Technical Hip · FWF · Ganja White Night · Radio Panik · YouFM · RTBF</p></div></div>
+          <div class="timeline-row" data-cv-index="1"><span class="year">2000—NOW</span><div><h3 data-i18n="cv2">Web designer</h3><p>Independent projects · Qwentes · Barbiana · Musée du Capitalisme</p></div></div>
+          <div class="timeline-row" data-cv-index="2"><span class="year">2010—NOW</span><div><h3 data-i18n="cv3">Social & cultural work</h3><p>MJ / ASBL · education · digital workshops · cultural mediation</p></div></div>
+          <div class="timeline-row" data-cv-index="3"><span class="year">1994</span><div><h3>Institut des Arts de Diffusion</h3><p data-i18n="cv4">Editing / script studies</p></div></div>
+        </div>
+        <aside class="skills">
+          <h3 data-i18n="skills">TOOLS / SKILLS</h3>
+          <div class="skill-list" id="skillsList">
+            <span>WEB DESIGN</span><span>VIDEO EDITING</span><span>MUSIC PRODUCTION</span><span>DJ</span><span>PHOTOSHOP</span><span>ILLUSTRATOR</span><span>PREMIERE</span><span>AFTER EFFECTS</span><span>TRAINING / WORKSHOPS</span>
+          </div>
+          <h3 data-i18n="langs">LANGUAGES</h3>
+          <p id="languagesList">FR · EN · ES · NL</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="section-heading">
+        <span class="index">04</span>
+        <h2 data-i18n="contactTitle">LET'S WORK TOGETHER</h2>
+      </div>
+      <div class="contact-grid">
+        <p data-i18n="contactText" id="contactText">Available for selected web, multimedia, music, cultural and educational projects.</p>
+        <div class="contact-links">
+          <a id="emailLink" href="mailto:flamenta@hotmail.com">EMAIL ↗</a>
+          <a id="currentSiteLink" href="https://antf-web.github.io/" target="_blank" rel="noreferrer">CURRENT SITE ↗</a>
+          <a href="#" data-i18n="cvPdf">DOWNLOAD CV ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>ANTOINE FLAMENT</span><span id="footerLocation">MONS / BELGIUM</span><span>© 2026</span></footer>
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
