@@ -119,13 +119,13 @@ window.SITE_DATA = {
       "poster": "https://antf-web.github.io/images/OldBoy.jpg"
     },
     {
-      "id": "video-mupnunq0",
+      "id": "video-mulpf240",
       "category": "video",
       "tag": "VIDEO / 02",
       "title": "Skank-E VJ MIX",
       "description": {
-        "en": "Mash-Up Bizness VJ Mix",
-        "fr": "Mash-Up Bizness VJ Mix"
+        "en": "Add a short description.",
+        "fr": "Ajoutez une courte description."
       },
       "tools": "VIDEO",
       "link": "https://www.youtube.com/watch?v=XgZh3rOX12g&t=3s",
@@ -134,33 +134,33 @@ window.SITE_DATA = {
       "poster": ""
     },
     {
-      "id": "music-mupogwbj",
+      "id": "music-mupz3rp8",
       "category": "music",
       "tag": "MUSIC / 03",
       "title": "Kalo",
       "description": {
-        "en": "Afro Beats Alias",
-        "fr": "Afro Beats Alias"
+        "en": "Afro Beat Alias - DJ",
+        "fr": "Afro Beats Alias - DJ"
       },
       "tools": "MUSIC",
       "link": "https://www.youtube.com/@Kalo-2026",
       "mediaType": "image",
-      "media": "http://antzone.be/images/vlcsnap-2026-10-01-17h48m37s797.png",
+      "media": "https://antzone.be/images/vlcsnap-2026-10-01-17h48m37s797.png",
       "poster": ""
     },
     {
-      "id": "music-mupr1q05",
+      "id": "music-mupzcyny",
       "category": "music",
       "tag": "MUSIC / 04",
       "title": "Mandaï",
       "description": {
-        "en": "Future Garage Project",
-        "fr": "Projet Future Garage "
+        "en": "Music for Outsiders - Future Garage Project",
+        "fr": "Musique pour les Exclus - Projet Future Garage"
       },
       "tools": "MUSIC",
-      "link": "https://soundcloud.com/mandai-2084",
+      "link": "https://soundcloud.com/mandai-2084/tracks",
       "mediaType": "image",
-      "media": "http://antzone.be/images/MANDAI_Wide_Banner_16x9.png",
+      "media": "https://antzone.be/images/MANDAI_Wide_Banner_16x9.png",
       "poster": ""
     }
   ],
@@ -171,10 +171,7 @@ window.SITE_DATA = {
         "en": "Musician / DJ",
         "fr": "Musicien / DJ"
       },
-      "detail": {
-        "en": "Technical Hip · FWF · Ganja White Night · Radio Panik · YouFM · RTBF",
-        "fr": "Technical Hip · FWF · Ganja White Night · Radio Panik · YouFM · RTBF"
-      }
+      "detail": "Technical Hip · FWF · Ganja White Night · Radio Panik · YouFM · RTBF"
     },
     {
       "year": "2000—NOW",
@@ -182,10 +179,7 @@ window.SITE_DATA = {
         "en": "Web designer",
         "fr": "Web designer"
       },
-      "detail": {
-        "en": "Independent projects · Qwentes · Barbiana · Musée du Capitalisme",
-        "fr": "Projets Indépendants · Qwentes · Barbiana · Musée du Capitalisme"
-      }
+      "detail": "Independent projects · Qwentes · Barbiana · Musée du Capitalisme"
     },
     {
       "year": "2010—NOW",
@@ -193,10 +187,7 @@ window.SITE_DATA = {
         "en": "Social & cultural work",
         "fr": "Travail social & culturel"
       },
-      "detail": {
-        "en": "MJ / ASBL · education · digital workshops · cultural mediation",
-        "fr": "MJ / ASBL · Éducation Permanente · Ateliers Socio-Culturel/Digital · Médiation Culturelle"
-      }
+      "detail": "MJ / ASBL · education · digital workshops · cultural mediation"
     },
     {
       "year": "1994",
@@ -204,10 +195,7 @@ window.SITE_DATA = {
         "en": "Institut des Arts de Diffusion",
         "fr": "Institut des Arts de Diffusion"
       },
-      "detail": {
-        "en": "Editing / script studies",
-        "fr": "Montage / Script "
-      }
+      "detail": "Editing / script studies"
     }
   ],
   "videos": {
