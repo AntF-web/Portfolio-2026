@@ -145,7 +145,7 @@ window.SITE_DATA = {
       "tools": "MUSIC",
       "link": "https://www.youtube.com/@Kalo-2026",
       "mediaType": "image",
-      "media": "https://antf-web.github.io/Portfolio-2026/images/vlcsnap-2026-10-01-17h48m37s797.png",
+      "media": "https://antzone.be/Portfolio-2026/images/vlcsnap-2026-10-01-17h48m37s797.png",
       "poster": ""
     },
     {
@@ -160,7 +160,7 @@ window.SITE_DATA = {
       "tools": "MUSIC",
       "link": "https://soundcloud.com/mandai-2084",
       "mediaType": "image",
-      "media": "https://antf-web.github.io/Portfolio-2026/images/MANDAI_Wide_Banner_16x9.png",
+      "media": "https://antzone.be/Portfolio-2026/images/MANDAI_Wide_Banner_16x9.png",
       "poster": ""
     }
   ],
