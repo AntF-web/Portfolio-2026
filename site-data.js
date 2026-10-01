@@ -132,6 +132,21 @@ window.SITE_DATA = {
       "mediaType": "image",
       "media": "https://antf-web.github.io/Skank-E/assets/04_boombox_icon_720p.png",
       "poster": ""
+    },
+    {
+      "id": "music-mupogwbj",
+      "category": "music",
+      "tag": "MUSIC / 03",
+      "title": "Kalo",
+      "description": {
+        "en": "Afro Beats Alias",
+        "fr": "Afro Beats Alias"
+      },
+      "tools": "MUSIC",
+      "link": "https://www.youtube.com/@Kalo-2026",
+      "mediaType": "image",
+      "media": "",
+      "poster": ""
     }
   ],
   "cv": [
