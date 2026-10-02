@@ -73,7 +73,8 @@ function applyDynamicContent() {
     if (!row) return;
     setText(row.querySelector('.year'), item.year);
     setText(row.querySelector('h3'), item.title?.[lang] || item.title?.en);
-    setText(row.querySelector('p'), item.detail);
+    const detail = typeof item.detail === 'string' ? item.detail : (item.detail?.[lang] || item.detail?.en || '');
+    setText(row.querySelector('p'), detail);
   });
 
   setText(byId('videoIntro'), siteData.videos?.intro?.[lang]);
