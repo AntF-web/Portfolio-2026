@@ -158,7 +158,7 @@ window.SITE_DATA = {
         "fr": "Projet Future Garage "
       },
       "tools": "MUSIC",
-      "link": "https://soundcloud.com/mandai-2084",
+      "link": "https://soundcloud.com/mandai-2084/tracks",
       "mediaType": "image",
       "media": "https://antzone.be/images/Mandai_Grunge_Background_LOGO_16x9.png",
       "poster": ""
