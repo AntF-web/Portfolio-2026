@@ -119,7 +119,7 @@ window.SITE_DATA = {
       "poster": "https://antf-web.github.io/images/OldBoy.jpg"
     },
     {
-      "id": "web-mur5ykad",
+      "id": "web-mvjwhljv",
       "category": "web",
       "tag": "WEB / 03",
       "title": "Found Sound - Independent Music Notes",
@@ -149,21 +149,6 @@ window.SITE_DATA = {
       "poster": ""
     },
     {
-      "id": "music-mupogwbj",
-      "category": "music",
-      "tag": "MUSIC / 03",
-      "title": "Kalo",
-      "description": {
-        "en": "Afro Beats Alias",
-        "fr": "Afro Beats Alias"
-      },
-      "tools": "MUSIC",
-      "link": "https://www.youtube.com/@Kalo-2026",
-      "mediaType": "image",
-      "media": "https://antzone.be/images/vlcsnap-2026-10-01-17h48m37s797.png",
-      "poster": ""
-    },
-    {
       "id": "musee",
       "category": "web",
       "tag": "WEB / 04",
@@ -179,6 +164,21 @@ window.SITE_DATA = {
       "poster": ""
     },
     {
+      "id": "music-mupogwbj",
+      "category": "music",
+      "tag": "MUSIC / 03",
+      "title": "Kalo",
+      "description": {
+        "en": "Afro Beats Alias",
+        "fr": "Afro Beats Alias"
+      },
+      "tools": "MUSIC",
+      "link": "https://www.youtube.com/@Kalo-2026",
+      "mediaType": "image",
+      "media": "https://antzone.be/images/vlcsnap-2026-10-01-17h48m37s797.png",
+      "poster": ""
+    },
+    {
       "id": "music-mupr1q05",
       "category": "music",
       "tag": "MUSIC / 04",
@@ -188,7 +188,7 @@ window.SITE_DATA = {
         "fr": "Projet Future Garage "
       },
       "tools": "MUSIC",
-      "link": "https://soundcloud.com/mandai-2084/tracks",
+      "link": "https://soundcloud.com/mandai-2084",
       "mediaType": "image",
       "media": "https://antzone.be/images/Mandai_Grunge_Background_LOGO_16x9.png",
       "poster": ""
@@ -312,7 +312,7 @@ window.SITE_DATA = {
         }
       },
       {
-        "title": "Hip-Hop History Timeline ",
+        "title": "Hip-Hop History Timeline",
         "kind": "TIMELINE",
         "link": "https://antf-web.github.io/hip-hop-history-map/",
         "image": "https://www.zinnedproject.org/wp-content/uploads/2026/01/hip-hop-lesson-GMFlash.jpg",
