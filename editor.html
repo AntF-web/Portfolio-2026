@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
   <title>Antoine Flament — Site Editor</title>
+  <!-- FAVICON -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#111111">
   <link rel="stylesheet" href="editor.css" />
 </head>
 <body class="editor-locked">
@@ -26,6 +33,7 @@
     <div class="editor-actions">
       <a class="btn" href="index.html" target="_blank">PREVIEW PORTFOLIO ↗</a>
       <a class="btn" href="videos.html" target="_blank">PREVIEW VIDEOS ↗</a>
+      <a class="btn" href="maps.html" target="_blank">PREVIEW MAPS ↗</a>
       <button class="btn" id="savePreview">SAVE PREVIEW</button>
       <button class="btn primary" id="exportData">EXPORT site-data.js</button>
       <button class="btn" id="lockEditor" type="button">LOCK</button>
@@ -45,6 +53,7 @@
       <button class="tab" data-tab="projects">PROJECTS</button>
       <button class="tab" data-tab="cv">CV</button>
       <button class="tab" data-tab="videos">VJ / VIDEOS</button>
+      <button class="tab" data-tab="maps">MAPS / TIMELINES</button>
     </div>
 
     <section class="panel active" id="general"><div class="section-title"><span>01</span><h2>GENERAL</h2></div><div class="form-grid" id="generalFields"></div></section>
@@ -67,6 +76,17 @@
         <span class="toolbar-help">Use a direct video file URL (MP4/WebM) for videos displayed on the VJ page.</span>
       </div>
       <div id="videoFields"></div>
+    </section>
+
+    <section class="panel" id="maps">
+      <div class="section-title"><span>05</span><h2>MAPS / TIMELINES</h2></div>
+      <div class="notice compact"><strong>WEB subsection:</strong> this gallery is opened from the Maps / Timelines card inside the WEB category. It is not a new top-level portfolio filter.</div>
+      <div class="form-grid" id="mapsIntroFields"></div>
+      <div class="collection-toolbar">
+        <button class="btn add" type="button" id="addMapItem">+ MAP / TIMELINE</button>
+        <span class="toolbar-help">Each object can link to a live GitHub Pages map, timeline, repository, or any external web project.</span>
+      </div>
+      <div id="mapFields"></div>
     </section>
 
     <div style="margin-top:38px"><button class="btn danger" id="clearPreview">RESET LOCAL PREVIEW</button></div>

@@ -6,6 +6,30 @@ const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const field = (label,path,value,type='text',full=false,help='') => `<div class="field ${full?'full':''}"><label>${esc(label)}</label>${type==='textarea'?`<textarea data-path="${esc(path)}">${esc(value)}</textarea>`:`<input type="${type}" data-path="${esc(path)}" value="${esc(value)}">`}${help?`<div class="help inline">${esc(help)}</div>`:''}</div>`;
 
+function ensureMapsFeature(){
+  data.projects ||= [];
+  if(!data.projects.some(p=>p.id==='maps-timelines')){
+    const card={id:'maps-timelines',category:'web',tag:'WEB / MAPS',title:'Maps / Timelines',description:{en:'Interactive maps, timelines & data stories',fr:'Cartes interactives, timelines & récits de données'},tools:'WEB · MAPS · DATA · TIMELINES',link:'maps.html',mediaType:'maps',media:'',poster:''};
+    const musicStoryIndex=data.projects.findIndex(p=>p.id==='musicstory');
+    data.projects.splice(musicStoryIndex>=0?musicStoryIndex+1:data.projects.length,0,card);
+  }
+  data.maps ||= {
+    intro:{en:'Interactive maps, historical timelines and data-driven web experiments exploring music, politics, colonial history and environmental change.',fr:'Cartes interactives, timelines historiques et expérimentations web basées sur les données autour de la musique, de la politique, de l’histoire coloniale et des transformations environnementales.'},
+    examples:[
+        {title:'Popular Music Flow Map',kind:'MAP + TIMELINE',link:'https://github.com/AntF-web/music-flow-map',image:'',text:{en:'Interactive map tracing musical influences, circulation and appropriation flows across time.',fr:'Carte interactive retraçant les influences musicales, les circulations et les flux d’appropriation au fil du temps.'}},
+        {title:'Hip-Hop History Timeline',kind:'TIMELINE',link:'',image:'',text:{en:'Chronological history of hip-hop through key moments, places, images and audio examples.',fr:'Histoire chronologique du hip-hop à travers des moments clés, des lieux, des images et des exemples audio.'}},
+        {title:'Left-Wing Football Clubs',kind:'MAP',link:'https://github.com/AntF-web/left_wing_football_clubs',image:'',text:{en:'Interactive world map of left-wing, supporter-owned and politically engaged football clubs.',fr:'Carte mondiale interactive des clubs de football de gauche, détenus par leurs supporters ou politiquement engagés.'}},
+        {title:'Colonialism History',kind:'MAP + TIMELINE',link:'https://github.com/AntF-web/colonialism-map',image:'',text:{en:'Interactive map and timeline exploring colonial powers, territories and historical expansion.',fr:'Carte et timeline interactives explorant les puissances coloniales, les territoires et l’expansion historique.'}},
+        {title:'Global Deforestation',kind:'MAP + TIMELINE',link:'https://github.com/AntF-web/global-deforestation-map',image:'',text:{en:'Historical geography of global deforestation from the early 20th century to the present.',fr:'Géographie historique de la déforestation mondiale du début du XXe siècle à aujourd’hui.'}},
+        {title:'Capitalism Timeline',kind:'TIMELINE',link:'',image:'',text:{en:'Interactive chronology of key events and systems that contributed to the development of capitalism.',fr:'Chronologie interactive des événements et systèmes ayant contribué au développement du capitalisme.'}},
+        {title:'Football History Timeline',kind:'TIMELINE',link:'',image:'',text:{en:'Interactive chronological presentation of major moments in football history.',fr:'Présentation chronologique interactive des grands moments de l’histoire du football.'}}
+      ]
+  };
+  data.maps.intro ||= {en:'Interactive maps and timelines.',fr:'Cartes et timelines interactives.'};
+  data.maps.examples ||= [];
+}
+ensureMapsFeature();
+
 function renderGeneral(){
   const g=data.general;
   $('#generalFields').innerHTML = [
@@ -28,6 +52,7 @@ function mediaOptions(p,i){
     <option value="image" ${p.mediaType==='image'?'selected':''}>IMAGE / THUMBNAIL</option>
     <option value="video" ${p.mediaType==='video'?'selected':''}>LOOPING VIDEO</option>
     <option value="custom" ${p.mediaType==='custom'?'selected':''}>MUSIC STORY CUSTOM VISUAL</option>
+    <option value="maps" ${p.mediaType==='maps'?'selected':''}>MAPS / TIMELINES CUSTOM VISUAL</option>
   </select></div>`;
 }
 
@@ -35,21 +60,13 @@ function renderProjects(){
   const projects=data.projects||[];
   if(!projects.length){ $('#projectsFields').innerHTML='<div class="empty-state">No projects yet. Add MUSIC, WEB or VIDEO above.</div>'; return; }
   $('#projectsFields').innerHTML=projects.map((p,i)=>`<div class="edit-card" data-editor-project="${i}">
-    <div class="edit-card-head">
-      <span>${esc(p.title || 'UNTITLED PROJECT')}</span>
-      <div class="card-actions">
-        <span class="badge">${esc((p.category||'project').toUpperCase())}</span>
-        <button class="mini-btn" type="button" data-project-action="up" data-index="${i}" aria-label="Move project up">↑</button>
-        <button class="mini-btn" type="button" data-project-action="down" data-index="${i}" aria-label="Move project down">↓</button>
-        <button class="mini-btn remove" type="button" data-project-action="remove" data-index="${i}">REMOVE</button>
-      </div>
-    </div>
+    <div class="edit-card-head"><span>${esc(p.title || 'UNTITLED PROJECT')}</span><div class="card-actions"><span class="badge">${esc((p.category||'project').toUpperCase())}</span><button class="mini-btn" type="button" data-project-action="up" data-index="${i}" aria-label="Move project up">↑</button><button class="mini-btn" type="button" data-project-action="down" data-index="${i}" aria-label="Move project down">↓</button><button class="mini-btn remove" type="button" data-project-action="remove" data-index="${i}">REMOVE</button></div></div>
     <div class="edit-card-body form-grid">
       ${field('Title',`projects.${i}.title`,p.title)}
       <div class="field"><label>CATEGORY / FILTER</label><select data-path="projects.${i}.category"><option value="music" ${p.category==='music'?'selected':''}>MUSIC</option><option value="web" ${p.category==='web'?'selected':''}>WEB</option><option value="video" ${p.category==='video'?'selected':''}>VIDEO</option></select></div>
       ${field('Description — EN',`projects.${i}.description.en`,p.description?.en||'','textarea')}${field('Description — FR',`projects.${i}.description.fr`,p.description?.fr||'','textarea')}
       ${field('Tools / tags',`projects.${i}.tools`,p.tools||'')}${field('Small visual label',`projects.${i}.tag`,p.tag||'')}
-      ${field('Project / external link',`projects.${i}.link`,p.link||'','url',true,'Can be a website, YouTube, music page, or an internal page such as videos.html.')}
+      ${field('Project / external link',`projects.${i}.link`,p.link||'','url',true,'Can be a website, YouTube, music page, or an internal page such as videos.html / maps.html.')}
       ${mediaOptions(p,i)}
       ${field('Thumbnail / direct video URL (optional)',`projects.${i}.media`,p.media||'','url',false,'Leave empty for an automatic text-based card visual.')}
       ${p.mediaType==='video'?field('Video poster image URL (optional)',`projects.${i}.poster`,p.poster||'','url',true):''}
@@ -58,104 +75,52 @@ function renderProjects(){
 }
 
 function normalizeCvDetails(){
-  (data.cv||[]).forEach(c=>{
-    c.title ||= {en:'',fr:''};
-    if(typeof c.detail === 'string') c.detail={en:c.detail,fr:c.detail};
-    else c.detail ||= {en:'',fr:''};
-    if(c.detail.en == null) c.detail.en='';
-    if(c.detail.fr == null) c.detail.fr=c.detail.en || '';
-  });
+  (data.cv||[]).forEach(c=>{c.title ||= {en:'',fr:''};if(typeof c.detail === 'string') c.detail={en:c.detail,fr:c.detail};else c.detail ||= {en:'',fr:''};if(c.detail.en == null) c.detail.en='';if(c.detail.fr == null) c.detail.fr=c.detail.en || '';});
 }
-
-function renderCv(){
-  normalizeCvDetails();
-  $('#cvFields').innerHTML=(data.cv||[]).map((c,i)=>`<div class="edit-card"><div class="edit-card-head"><span>${esc(c.year)}</span><span class="badge">CV ${i+1}</span></div><div class="edit-card-body form-grid">
-  ${field('Years',`cv.${i}.year`,c.year)}${field('Title — EN',`cv.${i}.title.en`,c.title.en)}${field('Title — FR',`cv.${i}.title.fr`,c.title.fr)}${field('Detail — EN',`cv.${i}.detail.en`,c.detail.en,'textarea')}${field('Detail — FR',`cv.${i}.detail.fr`,c.detail.fr,'textarea')}
-  </div></div>`).join('');
-}
+function renderCv(){normalizeCvDetails();$('#cvFields').innerHTML=(data.cv||[]).map((c,i)=>`<div class="edit-card"><div class="edit-card-head"><span>${esc(c.year)}</span><span class="badge">CV ${i+1}</span></div><div class="edit-card-body form-grid">${field('Years',`cv.${i}.year`,c.year)}${field('Title — EN',`cv.${i}.title.en`,c.title.en)}${field('Title — FR',`cv.${i}.title.fr`,c.title.fr)}${field('Detail — EN',`cv.${i}.detail.en`,c.detail.en,'textarea')}${field('Detail — FR',`cv.${i}.detail.fr`,c.detail.fr,'textarea')}</div></div>`).join('');}
 
 function renderVideos(){
   const intro=data.videos?.intro || {en:'',fr:''};
   $('#videoIntroFields').innerHTML=field('VJ page intro — EN','videos.intro.en',intro.en,'textarea')+field('VJ page intro — FR','videos.intro.fr',intro.fr,'textarea');
   const examples=data.videos?.examples||[];
   if(!examples.length){ $('#videoFields').innerHTML='<div class="empty-state">No VJ examples yet. Add one above.</div>'; return; }
-  $('#videoFields').innerHTML=examples.map((v,i)=>`<div class="edit-card"><div class="edit-card-head"><span>${esc(v.title||'UNTITLED VIDEO')}</span><div class="card-actions"><span class="badge">VIDEO ${i+1}</span><button class="mini-btn" type="button" data-video-action="up" data-index="${i}">↑</button><button class="mini-btn" type="button" data-video-action="down" data-index="${i}">↓</button><button class="mini-btn remove" type="button" data-video-action="remove" data-index="${i}">REMOVE</button></div></div><div class="edit-card-body form-grid">
-  ${field('Title',`videos.examples.${i}.title`,v.title||'')}${field('Video URL',`videos.examples.${i}.src`,v.src||'','url',false,'Direct MP4/WebM URL recommended.')}${field('Description — EN',`videos.examples.${i}.text.en`,v.text?.en||'','textarea')}${field('Description — FR',`videos.examples.${i}.text.fr`,v.text?.fr||'','textarea')}${field('Poster image URL (optional)',`videos.examples.${i}.poster`,v.poster||'','url',true)}
+  $('#videoFields').innerHTML=examples.map((v,i)=>`<div class="edit-card"><div class="edit-card-head"><span>${esc(v.title||'UNTITLED VIDEO')}</span><div class="card-actions"><span class="badge">VIDEO ${i+1}</span><button class="mini-btn" type="button" data-video-action="up" data-index="${i}">↑</button><button class="mini-btn" type="button" data-video-action="down" data-index="${i}">↓</button><button class="mini-btn remove" type="button" data-video-action="remove" data-index="${i}">REMOVE</button></div></div><div class="edit-card-body form-grid">${field('Title',`videos.examples.${i}.title`,v.title||'')}${field('Video URL',`videos.examples.${i}.src`,v.src||'','url',false,'Direct MP4/WebM URL recommended.')}${field('Description — EN',`videos.examples.${i}.text.en`,v.text?.en||'','textarea')}${field('Description — FR',`videos.examples.${i}.text.fr`,v.text?.fr||'','textarea')}${field('Poster image URL (optional)',`videos.examples.${i}.poster`,v.poster||'','url',true)}</div></div>`).join('');
+}
+
+function renderMaps(){
+  ensureMapsFeature();
+  const intro=data.maps?.intro || {en:'',fr:''};
+  $('#mapsIntroFields').innerHTML=field('Maps page intro — EN','maps.intro.en',intro.en,'textarea')+field('Maps page intro — FR','maps.intro.fr',intro.fr,'textarea');
+  const examples=data.maps?.examples||[];
+  if(!examples.length){ $('#mapFields').innerHTML='<div class="empty-state">No map/timeline projects yet. Add one above.</div>'; return; }
+  $('#mapFields').innerHTML=examples.map((m,i)=>`<div class="edit-card"><div class="edit-card-head"><span>${esc(m.title||'UNTITLED MAP')}</span><div class="card-actions"><span class="badge">${esc(m.kind||'MAP')}</span><button class="mini-btn" type="button" data-map-action="up" data-index="${i}">↑</button><button class="mini-btn" type="button" data-map-action="down" data-index="${i}">↓</button><button class="mini-btn remove" type="button" data-map-action="remove" data-index="${i}">REMOVE</button></div></div><div class="edit-card-body form-grid">
+    ${field('Title',`maps.examples.${i}.title`,m.title||'')}
+    <div class="field"><label>TYPE LABEL</label><select data-path="maps.examples.${i}.kind"><option value="MAP" ${m.kind==='MAP'?'selected':''}>MAP</option><option value="TIMELINE" ${m.kind==='TIMELINE'?'selected':''}>TIMELINE</option><option value="MAP + TIMELINE" ${m.kind==='MAP + TIMELINE'?'selected':''}>MAP + TIMELINE</option><option value="INTERACTIVE" ${m.kind==='INTERACTIVE'?'selected':''}>INTERACTIVE</option></select></div>
+    ${field('Project URL',`maps.examples.${i}.link`,m.link||'','url',true,'Use the live GitHub Pages URL when available; repository links also work.')}
+    ${field('Thumbnail image URL (optional)',`maps.examples.${i}.image`,m.image||'','url',true,'Leave empty to use the built-in map/timeline visual.')}
+    ${field('Description — EN',`maps.examples.${i}.text.en`,m.text?.en||'','textarea')}${field('Description — FR',`maps.examples.${i}.text.fr`,m.text?.fr||'','textarea')}
   </div></div>`).join('');
 }
 
-function setByPath(obj,path,value){
-  const parts=path.split('.'); let cur=obj;
-  for(let i=0;i<parts.length-1;i++) cur=cur[parts[i]];
-  const key=parts[parts.length-1];
-  if(path==='general.skills') cur[key]=value.split(/\n|,/).map(x=>x.trim()).filter(Boolean); else cur[key]=value;
-}
-
-function uniqueId(category){
-  const base=`${category}-${Date.now().toString(36)}`;
-  let id=base,n=2;
-  while((data.projects||[]).some(p=>p.id===id)) id=`${base}-${n++}`;
-  return id;
-}
-
-function addProject(category){
-  data.projects ||= [];
-  const n=data.projects.filter(p=>p.category===category).length+1;
-  const label=category.toUpperCase();
-  data.projects.push({
-    id:uniqueId(category), category, tag:`${label} / ${String(n).padStart(2,'0')}`, title:`New ${label.toLowerCase()} project`,
-    description:{en:'Add a short description.',fr:'Ajoutez une courte description.'},
-    tools:label, link:'', mediaType:'image', media:'', poster:''
-  });
-  renderProjects();
-  const cards=document.querySelectorAll('[data-editor-project]');
-  cards[cards.length-1]?.scrollIntoView({behavior:'smooth',block:'center'});
-  flash(`${label} project added`);
-}
-
-function moveItem(arr,index,delta){
-  const target=index+delta;
-  if(index<0||target<0||target>=arr.length) return;
-  [arr[index],arr[target]]=[arr[target],arr[index]];
-}
-
-function handleProjectAction(action,index){
-  const arr=data.projects||[];
-  if(action==='remove') arr.splice(index,1);
-  if(action==='up') moveItem(arr,index,-1);
-  if(action==='down') moveItem(arr,index,1);
-  renderProjects();
-}
-
-function handleVideoAction(action,index){
-  const arr=data.videos?.examples||[];
-  if(action==='remove') arr.splice(index,1);
-  if(action==='up') moveItem(arr,index,-1);
-  if(action==='down') moveItem(arr,index,1);
-  renderVideos();
-}
+function setByPath(obj,path,value){const parts=path.split('.');let cur=obj;for(let i=0;i<parts.length-1;i++) cur=cur[parts[i]];const key=parts[parts.length-1];if(path==='general.skills') cur[key]=value.split(/\n|,/).map(x=>x.trim()).filter(Boolean);else cur[key]=value;}
+function uniqueId(category){const base=`${category}-${Date.now().toString(36)}`;let id=base,n=2;while((data.projects||[]).some(p=>p.id===id)) id=`${base}-${n++}`;return id;}
+function addProject(category){data.projects ||= [];const n=data.projects.filter(p=>p.category===category).length+1;const label=category.toUpperCase();data.projects.push({id:uniqueId(category),category,tag:`${label} / ${String(n).padStart(2,'0')}`,title:`New ${label.toLowerCase()} project`,description:{en:'Add a short description.',fr:'Ajoutez une courte description.'},tools:label,link:'',mediaType:'image',media:'',poster:''});renderProjects();const cards=document.querySelectorAll('[data-editor-project]');cards[cards.length-1]?.scrollIntoView({behavior:'smooth',block:'center'});flash(`${label} project added`);}
+function moveItem(arr,index,delta){const target=index+delta;if(index<0||target<0||target>=arr.length)return;[arr[index],arr[target]]=[arr[target],arr[index]];}
+function handleProjectAction(action,index){const arr=data.projects||[];if(action==='remove') arr.splice(index,1);if(action==='up')moveItem(arr,index,-1);if(action==='down')moveItem(arr,index,1);renderProjects();}
+function handleVideoAction(action,index){const arr=data.videos?.examples||[];if(action==='remove')arr.splice(index,1);if(action==='up')moveItem(arr,index,-1);if(action==='down')moveItem(arr,index,1);renderVideos();}
+function handleMapAction(action,index){const arr=data.maps?.examples||[];if(action==='remove')arr.splice(index,1);if(action==='up')moveItem(arr,index,-1);if(action==='down')moveItem(arr,index,1);renderMaps();}
 
 document.addEventListener('input',e=>{const path=e.target.dataset.path;if(path)setByPath(data,path,e.target.value)});
 document.addEventListener('change',e=>{const path=e.target.dataset.path;if(path){setByPath(data,path,e.target.value);if(path.endsWith('.mediaType')) renderProjects();}});
-document.addEventListener('click',e=>{
-  const add=e.target.closest('[data-add-project]'); if(add){addProject(add.dataset.addProject);return;}
-  const pa=e.target.closest('[data-project-action]'); if(pa){handleProjectAction(pa.dataset.projectAction,Number(pa.dataset.index));return;}
-  const va=e.target.closest('[data-video-action]'); if(va){handleVideoAction(va.dataset.videoAction,Number(va.dataset.index));return;}
-});
+document.addEventListener('click',e=>{const add=e.target.closest('[data-add-project]');if(add){addProject(add.dataset.addProject);return;}const pa=e.target.closest('[data-project-action]');if(pa){handleProjectAction(pa.dataset.projectAction,Number(pa.dataset.index));return;}const va=e.target.closest('[data-video-action]');if(va){handleVideoAction(va.dataset.videoAction,Number(va.dataset.index));return;}const ma=e.target.closest('[data-map-action]');if(ma){handleMapAction(ma.dataset.mapAction,Number(ma.dataset.index));return;}});
 
-$('#addVjVideo').addEventListener('click',()=>{
-  data.videos ||= {intro:{en:'',fr:''},examples:[]}; data.videos.examples ||= [];
-  data.videos.examples.push({title:'New VJ video',src:'',poster:'',text:{en:'Add a short description.',fr:'Ajoutez une courte description.'}});
-  renderVideos();
-  flash('VJ video added');
-});
+$('#addVjVideo').addEventListener('click',()=>{data.videos ||= {intro:{en:'',fr:''},examples:[]};data.videos.examples ||= [];data.videos.examples.push({title:'New VJ video',src:'',poster:'',text:{en:'Add a short description.',fr:'Ajoutez une courte description.'}});renderVideos();flash('VJ video added');});
+$('#addMapItem').addEventListener('click',()=>{ensureMapsFeature();data.maps.examples.push({title:'New map / timeline',kind:'MAP + TIMELINE',link:'',image:'',text:{en:'Add a short description.',fr:'Ajoutez une courte description.'}});renderMaps();flash('Map / timeline added');});
 
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active')}));
-
 function flash(msg){const el=$('#status');el.textContent=msg;el.classList.add('show');clearTimeout(flash.t);flash.t=setTimeout(()=>el.classList.remove('show'),2200)}
 $('#savePreview').addEventListener('click',()=>{localStorage.setItem('antPortfolioPreviewData',JSON.stringify(data));flash('Preview saved in this browser')});
-$('#clearPreview').addEventListener('click',()=>{localStorage.removeItem('antPortfolioPreviewData');data=clone(window.SITE_DATA);renderAll();flash('Local preview reset')});
+$('#clearPreview').addEventListener('click',()=>{localStorage.removeItem('antPortfolioPreviewData');data=clone(window.SITE_DATA);ensureMapsFeature();renderAll();flash('Local preview reset')});
 $('#exportData').addEventListener('click',()=>{const blob=new Blob([`window.SITE_DATA = ${JSON.stringify(data,null,2)};\n`],{type:'application/javascript'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='site-data.js';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);flash('site-data.js exported')});
-
-function renderAll(){renderGeneral();renderProjects();renderCv();renderVideos()}
+function renderAll(){renderGeneral();renderProjects();renderCv();renderVideos();renderMaps()}
 renderAll();

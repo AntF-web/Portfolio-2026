@@ -89,18 +89,18 @@ window.SITE_DATA = {
       "poster": ""
     },
     {
-      "id": "musee",
+      "id": "maps-timelines",
       "category": "web",
       "tag": "WEB / 02",
-      "title": "Musée du Capitalisme",
+      "title": "Maps / Timelines",
       "description": {
-        "en": "Website / cultural project",
-        "fr": "Site web / projet culturel"
+        "en": "Interactive maps, timelines & data stories",
+        "fr": "Cartes interactives, timelines & récits de données"
       },
-      "tools": "WEB DESIGN · CULTURE",
-      "link": "https://museeducapitalisme.org/",
+      "tools": "WEB · MAPS · DATA · TIMELINES",
+      "link": "maps.html",
       "mediaType": "image",
-      "media": "https://antf-web.github.io/images/Bache-Alternative-full-kopie.jpg",
+      "media": "https://antzone.be/images/Maps.png",
       "poster": ""
     },
     {
@@ -117,6 +117,21 @@ window.SITE_DATA = {
       "mediaType": "video",
       "media": "https://antf-web.github.io/video/VJ2020_1.mp4",
       "poster": "https://antf-web.github.io/images/OldBoy.jpg"
+    },
+    {
+      "id": "web-mur5ykad",
+      "category": "web",
+      "tag": "WEB / 03",
+      "title": "Found Sound - Independent Music Notes",
+      "description": {
+        "en": "Personal Blog ",
+        "fr": "Blog Perso"
+      },
+      "tools": "WEB",
+      "link": "https://blog.antzone.be/",
+      "mediaType": "image",
+      "media": "https://antzone.be/images/Found%20_%20Sound%20%E2%80%94%20Independent%20Music%20Notes.png",
+      "poster": ""
     },
     {
       "id": "video-mupnunq0",
@@ -149,6 +164,21 @@ window.SITE_DATA = {
       "poster": ""
     },
     {
+      "id": "musee",
+      "category": "web",
+      "tag": "WEB / 04",
+      "title": "Musée du Capitalisme",
+      "description": {
+        "en": "Website / cultural project",
+        "fr": "Site web / projet culturel"
+      },
+      "tools": "WEB DESIGN · CULTURE",
+      "link": "https://museeducapitalisme.org/",
+      "mediaType": "image",
+      "media": "https://antf-web.github.io/images/Bache-Alternative-full-kopie.jpg",
+      "poster": ""
+    },
+    {
       "id": "music-mupr1q05",
       "category": "music",
       "tag": "MUSIC / 04",
@@ -161,21 +191,6 @@ window.SITE_DATA = {
       "link": "https://soundcloud.com/mandai-2084/tracks",
       "mediaType": "image",
       "media": "https://antzone.be/images/Mandai_Grunge_Background_LOGO_16x9.png",
-      "poster": ""
-    },
-    {
-      "id": "web-mur5ykad",
-      "category": "web",
-      "tag": "WEB / 03",
-      "title": "Found Sound - Independent Music Notes",
-      "description": {
-        "en": "Personal Blog ",
-        "fr": "Blog Perso"
-      },
-      "tools": "WEB",
-      "link": "https://blog.antzone.be/",
-      "mediaType": "image",
-      "media": "https://antzone.be/images/Found%20_%20Sound%20%E2%80%94%20Independent%20Music%20Notes.png",
       "poster": ""
     }
   ],
@@ -256,6 +271,64 @@ window.SITE_DATA = {
         "text": {
           "en": "Visual material created and mixed for live performance.",
           "fr": "Matière visuelle créée et mixée pour la performance live."
+        }
+      }
+    ]
+  },
+  "maps": {
+    "intro": {
+      "en": "Interactive maps, historical timelines and data-driven web experiments exploring music, politics, colonial history and environmental change.",
+      "fr": "Cartes interactives, timelines historiques et expérimentations web basées sur les données autour de la musique, de la politique, de l’histoire coloniale et des transformations environnementales."
+    },
+    "examples": [
+      {
+        "title": "Popular Music Flow Map",
+        "kind": "MAP + TIMELINE",
+        "link": "https://antf-web.github.io/music-flow-map/",
+        "image": "https://www.pngfind.com/pngs/m/225-2255152_guitar-acoustic-blues-musician-png-image-high-quality.png",
+        "text": {
+          "en": "Interactive map tracing musical influences, circulation and appropriation flows across time.",
+          "fr": "Carte interactive retraçant les influences musicales, les circulations et les flux d’appropriation au fil du temps."
+        }
+      },
+      {
+        "title": "Colonialism History",
+        "kind": "MAP + TIMELINE",
+        "link": "https://antf-web.github.io/colonialism-map/",
+        "image": "https://cdn6.picryl.com/photo/1910/01/01/pacification-with-the-maroon-negroes-0e5c96-640.jpg",
+        "text": {
+          "en": "Interactive map and timeline exploring colonial powers, territories and historical expansion.",
+          "fr": "Carte et timeline interactives explorant les puissances coloniales, les territoires et l’expansion historique."
+        }
+      },
+      {
+        "title": "Capitalism Timeline",
+        "kind": "TIMELINE",
+        "link": "https://antf-web.github.io/capitalism-history/",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCYV5HjAot18wj5JovSawx4O0QR2nrpebpH0W9zcxR3ijITlUwc3jkiew&s=10",
+        "text": {
+          "en": "Interactive chronology of key events and systems that contributed to the development of capitalism.",
+          "fr": "Chronologie interactive des événements et systèmes ayant contribué au développement du capitalisme."
+        }
+      },
+      {
+        "title": "Hip-Hop History Timeline ",
+        "kind": "TIMELINE",
+        "link": "https://antf-web.github.io/hip-hop-history-map/",
+        "image": "https://www.zinnedproject.org/wp-content/uploads/2026/01/hip-hop-lesson-GMFlash.jpg",
+        "text": {
+          "en": "Chronological history of hip-hop through key moments, places, images and audio examples.",
+          "fr": "Histoire chronologique du hip-hop à travers des moments clés, des lieux, des images et des exemples audio."
+        }
+      },
+      {
+        "title": "Global Deforestation",
+        "kind": "MAP + TIMELINE",
+        "link": "https://antf-web.github.io/global-deforestation-map",
+        "image": "https://live.staticflickr.com/598/31380011950_b3006ba189_b.jpg",
+        "text": {
+          "en": "Historical geography of global deforestation from the early 20th century to the present.",
+          "fr": "Géographie historique de la déforestation mondiale du début du XXe siècle à aujourd’hui."
         }
       }
     ]

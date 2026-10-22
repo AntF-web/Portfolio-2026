@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Antoine Flament — interactive maps, timelines and web data projects." />
+  <title>Antoine Flament — Maps / Timelines</title>
+  <!-- FAVICON -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#111111">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="maps-page">
+  <div class="noise" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Back to portfolio">
+      <div class="brand-mark">A<span>F</span></div>
+      <div class="brand-name">ANTOINE<br>FLAMENT</div>
+    </a>
+    <nav class="nav" aria-label="Page navigation">
+      <a href="index.html#work" data-i18n="backWork">PORTFOLIO</a>
+      <a href="index.html#work" data-i18n="webProjects">WEB PROJECTS</a>
+    </nav>
+    <button class="lang" id="langToggle" type="button" aria-label="Switch language">FR</button>
+  </header>
+
+  <main>
+    <section class="video-hero section maps-hero">
+      <div class="hero-kicker">WEB / MAPS</div>
+      <h1>MAPS /<br><span class="outline" data-i18n="timelineWord">TIMELINES</span></h1>
+      <div class="video-intro">
+        <p id="mapsIntro">Interactive maps, historical timelines and data-driven web experiments.</p>
+        <p class="video-tags">INTERACTIVE · DATA · HISTORY · CARTOGRAPHY</p>
+      </div>
+    </section>
+
+    <section class="maps-showcase section">
+      <div class="section-heading">
+        <span class="index">01</span>
+        <h2 data-i18n="featuredMaps">INTERACTIVE PROJECTS</h2>
+      </div>
+      <div class="maps-gallery" id="mapsGallery"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>ANTOINE FLAMENT / WEB</span>
+    <a class="footer-back" href="index.html#work" data-i18n="backPortfolio">← BACK TO PORTFOLIO</a>
+  </footer>
+
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
