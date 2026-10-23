@@ -4,6 +4,12 @@ let siteData = defaultData;
 // Browser-only editor previews are opt-in. Normal public visits must always
 // use the published site-data.js, even if this browser has an old saved preview.
 const previewMode = new URLSearchParams(window.location.search).get('preview') === '1';
+
+// Public pages should never keep editor preview data around. This second guard
+// is intentional: Firefox can retain localStorage even when asset cache changes.
+if (!previewMode) {
+  try { localStorage.removeItem('antPortfolioPreviewData'); } catch (e) {}
+}
 if (previewMode) {
   try {
     const local = localStorage.getItem('antPortfolioPreviewData');
