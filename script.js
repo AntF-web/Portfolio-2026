@@ -63,8 +63,15 @@ function ensureMapsFeature(){
 }
 ensureMapsFeature();
 
+const isFirefox = /Firefox\//.test(navigator.userAgent);
+
 function projectVisual(p){
   const tag=`<span class="project-tag">${escapeHtml(p.tag||String(p.category||'').toUpperCase())}</span><span class="project-arrow">↗</span>`;
+  if(isFirefox && (p.mediaType==='maps' || p.mediaType==='custom')){
+    const label = p.mediaType==='maps' ? 'WEB · MAPS · TIMELINES' : 'WEB · MUSIC · STORY';
+    const title = p.mediaType==='maps' ? 'MAPS / TIMELINES' : 'MUSIC STORY';
+    return `<div class="project-visual firefox-safe-card"><div class="firefox-safe-inner"><small>${label}</small><strong>${title}</strong></div>${tag}</div>`;
+  }
   if(p.mediaType==='maps'){
     return `<div class="project-visual project-maps"><div class="maps-card-visual" aria-hidden="true"><span class="map-dot d1"></span><span class="map-dot d2"></span><span class="map-dot d3"></span><span class="map-route r1"></span><span class="map-route r2"></span><span class="map-time-axis"></span><strong>MAPS /<br>TIMELINES</strong></div>${tag}</div>`;
   }

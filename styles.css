@@ -46,3 +46,67 @@
 .project-maps .map-dot,
 .project-maps .map-route,
 .project-maps .map-time-axis{visibility:visible!important;opacity:1}
+
+
+/* 2026-10-23 — FIREFOX SAFE RENDER MODE
+   Firefox/WebRender can show black compositor tiles with fixed SVG filter layers,
+   backdrop-filter and transformed/filtered media on some GPU/driver combinations.
+   These overrides are Firefox-only and trade a few cosmetic effects for stability. */
+@-moz-document url-prefix() {
+  .noise { display:none !important; background-image:none !important; }
+  .site-header {
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+    background:#efefeb !important;
+  }
+  .project,
+  .project-visual,
+  .project-visual *,
+  .map-frame,
+  .map-frame *,
+  .video-frame,
+  .video-frame * {
+    filter:none !important;
+    transform:none !important;
+    will-change:auto !important;
+  }
+  .project-visual:after { display:none !important; }
+  .project:hover .project-arrow { transform:none !important; }
+
+  /* Simple non-composited fallback for the two special WEB cards. */
+  .project-visual.firefox-safe-card {
+    background:#deded8 !important;
+    color:#111 !important;
+    overflow:hidden !important;
+  }
+  .firefox-safe-card:after { display:none !important; }
+  .firefox-safe-card .firefox-safe-inner {
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:clamp(24px,4vw,52px);
+    background:#deded8 !important;
+    color:#111 !important;
+  }
+  .firefox-safe-card .firefox-safe-inner small {
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:.14em;
+    color:#137f70;
+    margin-bottom:12px;
+  }
+  .firefox-safe-card .firefox-safe-inner strong {
+    font-size:clamp(34px,4.5vw,72px);
+    line-height:.82;
+    letter-spacing:-.055em;
+    color:#111 !important;
+  }
+  .firefox-safe-card .project-tag,
+  .firefox-safe-card .project-arrow {
+    color:#111 !important;
+    text-shadow:none !important;
+    border-color:#111 !important;
+  }
+}
