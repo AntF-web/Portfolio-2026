@@ -1,9 +1,15 @@
 const defaultData = window.SITE_DATA || {};
 let siteData = defaultData;
-try {
-  const local = localStorage.getItem('antPortfolioPreviewData');
-  if (local) siteData = JSON.parse(local);
-} catch (e) {}
+
+// Browser-only editor previews are opt-in. Normal public visits must always
+// use the published site-data.js, even if this browser has an old saved preview.
+const previewMode = new URLSearchParams(window.location.search).get('preview') === '1';
+if (previewMode) {
+  try {
+    const local = localStorage.getItem('antPortfolioPreviewData');
+    if (local) siteData = JSON.parse(local);
+  } catch (e) {}
+}
 
 const copy = {
   en:{navWork:'WORK',navBio:'BIO',navContact:'CONTACT',workTitle:'SELECTED WORK',cv1:'Musician / DJ',cv2:'Web designer',cv3:'Social & cultural work',cv4:'Editing / script studies',skills:'TOOLS / SKILLS',langs:'LANGUAGES',contactTitle:"LET'S WORK TOGETHER",cvPdf:'DOWNLOAD CV ↗',backWork:'PORTFOLIO',videoWord:'VIDEOS',featuredVideo:'VJ EXAMPLES',moreVideo:'MORE VIDEO',moreVideoText:'More edits, music videos and audiovisual experiments can be added here as the portfolio grows.',youtubeVisit:'VISIT YOUTUBE',backPortfolio:'← BACK TO PORTFOLIO',timelineWord:'TIMELINES',featuredMaps:'INTERACTIVE PROJECTS',webProjects:'WEB PROJECTS',mapOpen:'OPEN PROJECT ↗',mapNoLink:'PROJECT LINK TO ADD'},
