@@ -32,3 +32,17 @@
 .map-auto-visual{background:radial-gradient(circle at 72% 27%,rgba(40,181,159,.22),transparent 22%),linear-gradient(145deg,#1a1a19,#070707);color:#f1f0e9}.map-auto-visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);background-size:34px 34px}.map-auto-visual strong{position:absolute;left:24px;bottom:22px;font-size:clamp(27px,3.3vw,50px);letter-spacing:-.045em;z-index:2}.map-grid-dot{position:absolute;width:14px;height:14px;border:3px solid var(--accent);border-radius:50%;z-index:2}.map-grid-dot.a{left:17%;top:27%}.map-grid-dot.b{right:20%;top:21%}.map-grid-dot.c{right:35%;bottom:24%}.map-grid-line{position:absolute;height:2px;background:var(--accent);z-index:1;transform-origin:left center}.map-grid-line.one{width:52%;left:20%;top:30%;transform:rotate(-7deg)}.map-grid-line.two{width:28%;right:27%;top:28%;transform:rotate(61deg)}
 .map-caption{padding:20px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:start}.map-caption h3{margin:0 0 8px;font-size:25px}.map-caption p{margin:0;max-width:55ch;font-size:14px;line-height:1.4;opacity:.72}.map-meta{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-width:135px}.map-meta span,.map-meta b{font-size:10px;letter-spacing:.08em}.map-meta span{font-weight:900}.map-meta b{font-weight:800;color:var(--accent)}.map-disabled .map-meta b{color:#777}
 @media(max-width:800px){.maps-gallery{grid-template-columns:1fr}.map-caption{grid-template-columns:1fr}.map-meta{text-align:left;align-items:flex-start}.maps-hero h1{font-size:clamp(60px,18vw,110px)}}
+
+
+/* 2026-10-23 — hard fallback for custom project cards.
+   Prevents Music Story / Maps cards from degrading to blank black panels. */
+.project-musicstory .musicstory-card,
+.project-maps .maps-card-visual{display:block!important;visibility:visible!important;opacity:1!important;color:#f1f0e9!important}
+.project-musicstory .musicstory-card strong,
+.project-maps .maps-card-visual strong{display:block!important;visibility:visible!important;opacity:1!important;z-index:4!important}
+.project-musicstory .musicstory-rec,
+.project-musicstory .musicstory-volume,
+.project-musicstory .musicstory-genres,
+.project-maps .map-dot,
+.project-maps .map-route,
+.project-maps .map-time-axis{visibility:visible!important;opacity:1}
