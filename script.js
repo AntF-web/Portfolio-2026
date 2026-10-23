@@ -181,3 +181,35 @@ if (toggle) toggle.addEventListener('click', () => {
 });
 
 translatePage();
+
+
+// Firefox initial-paint recovery.
+// On some Firefox/WebRender configurations the first DOM build of the
+// project/media grids is present but not painted correctly. Switching language
+// fixes it because translatePage() rebuilds those grids. Re-run the exact same
+// render once after all page resources are loaded, without changing language.
+function stabilizeInitialRender(){
+  const scrollX = window.scrollX;
+  const scrollY = window.scrollY;
+  requestAnimationFrame(() => {
+    translatePage();
+    applyFilter(activeFilter);
+    // Force layout before Firefox's next paint.
+    void document.documentElement.offsetHeight;
+    requestAnimationFrame(() => {
+      window.scrollTo(scrollX, scrollY);
+    });
+  });
+}
+
+if (document.readyState === 'complete') {
+  stabilizeInitialRender();
+} else {
+  window.addEventListener('load', stabilizeInitialRender, { once:true });
+}
+
+// Also handle Firefox BFCache restores, where a stale composited frame can be
+// shown even though the DOM is correct.
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) stabilizeInitialRender();
+});
